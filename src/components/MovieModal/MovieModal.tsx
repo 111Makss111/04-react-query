@@ -67,7 +67,7 @@ export default function MovieModal({ movie, onClose }: MovieModalProps) {
             <strong>Release Date:</strong> {movie.release_date || "Unknown"}
           </p>
           <p>
-            <strong>Rating:</strong> {movie.vote_average}/10
+            <strong>Rating :</strong> {movie.vote_average}/10
           </p>
         </div>
       </div>
