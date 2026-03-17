@@ -1,5 +1,12 @@
 import axios from "axios";
-import type { FetchMoviesResponse } from "../types/movie";
+import type { Movie } from "../types/movie";
+
+interface FetchMoviesResponse {
+  page: number;
+  results: Movie[];
+  total_pages: number;
+  total_results: number;
+}
 
 const tmdbToken = import.meta.env.VITE_TMDB_TOKEN;
 

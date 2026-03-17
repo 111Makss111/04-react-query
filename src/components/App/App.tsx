@@ -1,7 +1,7 @@
+import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import { useQuery } from "@tanstack/react-query";
-import ReactPaginate from "react-paginate";
 import toast from "react-hot-toast";
+import ReactPaginate from "react-paginate";
 import SearchBar from "../SearchBar/SearchBar";
 import MovieGrid from "../MovieGrid/MovieGrid";
 import Loader from "../Loader/Loader";
@@ -20,6 +20,7 @@ export default function App() {
     queryKey: ["movies", query, page],
     queryFn: () => fetchMovies(query, page),
     enabled: query.trim() !== "",
+    placeholderData: keepPreviousData,
   });
 
   const movies = data?.results ?? [];

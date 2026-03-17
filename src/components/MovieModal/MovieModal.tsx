@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, type MouseEvent } from "react";
 import { createPortal } from "react-dom";
 import type { Movie } from "../../types/movie";
 import css from "./MovieModal.module.css";
@@ -25,9 +25,7 @@ export default function MovieModal({ movie, onClose }: MovieModalProps) {
     };
   }, [onClose]);
 
-  function handleBackdropClick(
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-  ) {
+  function handleBackdropClick(event: MouseEvent<HTMLDivElement>) {
     if (event.target === event.currentTarget) {
       onClose();
     }
@@ -42,6 +40,7 @@ export default function MovieModal({ movie, onClose }: MovieModalProps) {
     >
       <div className={css.modal}>
         <button
+          type="button"
           className={css.closeButton}
           aria-label="Close modal"
           onClick={onClose}
@@ -50,6 +49,7 @@ export default function MovieModal({ movie, onClose }: MovieModalProps) {
         </button>
 
         <img
+          className={css.image}
           src={
             movie.backdrop_path
               ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
@@ -58,7 +58,6 @@ export default function MovieModal({ movie, onClose }: MovieModalProps) {
                 : "https://placehold.co/1200x675?text=No+Image"
           }
           alt={movie.title}
-          className={css.image}
         />
 
         <div className={css.content}>
